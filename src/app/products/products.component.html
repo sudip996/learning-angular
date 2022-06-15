@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-md-6">
+        <caption>List OF Products</caption>
+
+        <button data-bs-toggle = "modal" data-bs-target = "#demo" (click)="Add()">+Add Product</button>
+
+        <div class="modal fade" id="demo" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Add Product Here</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                       <ul> 
+                        <label>Product Name:</label>
+                        <input type="text" name="product" placeholder="enter product here" [(ngModel)]="addProducts.ProductName">
+                       </ul>
+                       <ul>
+                        <label>Quantity:</label>
+                        <input type="number" name="Quantity" placeholder="enter quantity here" [(ngModel)]="addProducts.AvailableQty">
+                       </ul>
+                       <ul>
+                        <label>Unit Price:</label>
+                        <input type="text" name="price" placeholder="enter price here" [(ngModel)]="addProducts.UnitPrice">
+                       </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" (click)="Save()">save</button>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            ​
+            <tr>
+                <th>SN</th>
+                <th>Product Name</th>
+                <th>Available Qty</th>
+                <th>Unit Price</th>
+                <th>Action</th>
+            </tr>
+
+            <tr *ngFor="let row of ProductList; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ row.ProductName }}</td>
+                <td>{{ row.AvailableQty }}</td>
+                <td>{{ row.UnitPrice }}</td>
+                <td><input id="view" type="submit" name="view" value="view" (click)="view(row)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" />
+                    <input id="edit" type="submit" name="edit" value="Edit" (click)="edit({row,i})"
+                        data-bs-toggle="modal" data-bs-target="#editModal" />
+                    <button class="button_transparent" (click)="delete(row)">delete</button>
+                </td>
+
+                <div *ngIf = "showView" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">View Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span><b>S.N: </b></span>{{viewPerson.sn}}<br />
+                                <span><b>Product Name : </b></span>{{viewPerson.ProductName}}<br />
+                                <span><b>Available Qty : </b></span>{{viewPerson.AvailableQty}}<br />
+                                <span><b>UnitPrice : </b></span>{{viewPerson.UnitPrice}}<br />
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf = "showEditModal" class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edit Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <label>Product Name:</label>
+                                    <input type="text" name="Product Name" placeholder="Enter Product here"
+                                        [(ngModel)]="editPerson.ProductName">
+                                </ul>
+                                <ul>
+                                    <label>Available Qty:</label>
+                                    <input type="button" ngdisabled="all" name="AvailableQty"
+                                        [(ngModel)]="editPerson.AvailableQty">
+                                </ul>
+                                <ul>
+                                    <label>Unit Price:</label>
+                                    <input type="number" name="Price" placeholder="Enter price here"
+                                        [(ngModel)]="editPerson.UnitPrice">
+                                </ul>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Update</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                     -->
+
+                     
